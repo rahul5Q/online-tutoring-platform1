@@ -132,17 +132,20 @@ form button:hover {
 }
 
 .social-links a {
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
-    color: #0073e6;
     font-weight: bold;
+    color: #0073e6; /* Blue color */
+    font-size: 18px;
     margin: 10px;
-    display: inline-block;
 }
 
-.social-links a:hover {
-    color: #005bb5;
+.social-links img {
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
 }
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .course-container, .pricing-container {
