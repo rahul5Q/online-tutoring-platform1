@@ -1,11 +1,13 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background: #f9f9f9;
     text-align: center;
-    background: #f4f4f4;
 }
 
+/* Header */
 header {
     background: #0073e6;
     padding: 20px;
@@ -19,6 +21,23 @@ nav a {
     font-weight: bold;
 }
 
+/* Hero Section */
+.hero {
+    padding: 60px;
+    background: url('https://source.unsplash.com/1600x600/?education,learning') no-repeat center center/cover;
+    color: white;
+}
+
+.cta-button {
+    background: #ff9800;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Sections */
 .section {
     padding: 50px;
     background: white;
@@ -28,25 +47,99 @@ nav a {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-button {
+/* Courses Section */
+.course-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.course-card {
+    background: #e3f2fd;
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+.course-card:hover {
+    transform: scale(1.1);
+}
+
+/* Pricing Section */
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.pricing-card {
+    background: #fff3e0;
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-card h3 {
+    margin: 0;
+}
+
+.pricing-card p {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.pricing-card button {
     background: #0073e6;
     color: white;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
-    margin-top: 10px;
+}
+
+/* Contact Form */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 form input, form textarea {
     width: 80%;
     padding: 10px;
     margin: 10px 0;
-    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
+form button {
+    background: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Footer */
 footer {
     background: #333;
     color: white;
     padding: 10px;
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .course-container, .pricing-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 }
 
