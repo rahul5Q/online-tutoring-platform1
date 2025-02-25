@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
+    background: #f4f4f4;
 }
 
 header {
@@ -18,9 +19,13 @@ nav a {
     font-weight: bold;
 }
 
-.hero {
+.section {
     padding: 50px;
-    background: #f4f4f4;
+    background: white;
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 button {
@@ -29,10 +34,14 @@ button {
     padding: 10px 20px;
     border: none;
     cursor: pointer;
+    margin-top: 10px;
 }
 
-.courses {
-    padding: 20px;
+form input, form textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    display: block;
 }
 
 footer {
@@ -40,3 +49,4 @@ footer {
     color: white;
     padding: 10px;
 }
+
