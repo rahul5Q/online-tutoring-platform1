@@ -1,117 +1,401 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Tutoring Platform</title>
+    <title>Learnify — Online Tutoring Platform</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="logo">📚 Learnify</div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#courses">Courses</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#contact">Contact</a>
+
+    <!-- ===================================================
+         HEADER / NAVIGATION
+         - id="mainHeader" used by JS to add .scrolled class
+         - Hamburger button shown only on mobile (CSS)
+    ==================================================== -->
+    <header id="mainHeader">
+        <a href="#home" class="logo">📚 Learnify</a>
+
+        <nav id="mainNav" aria-label="Main navigation">
+            <a href="#home"    class="nav-link">Home</a>
+            <a href="#courses" class="nav-link">Courses</a>
+            <a href="#pricing" class="nav-link">Pricing</a>
+            <a href="#contact" class="nav-link">Contact</a>
         </nav>
+
+        <!-- Three spans animate into an X when the menu is open -->
+        <button class="hamburger"
+                id="hamburger"
+                aria-label="Toggle navigation menu"
+                aria-expanded="false"
+                aria-controls="mainNav">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
 
-    <!-- Hero Section -->
-<section id="hero">
-    <div class="hero-content">
-        <h1>Unlock Your Potential with <span class="highlight">Learnyfy</span></h1>
-        <p>Expert tutors. Flexible learning. Affordable pricing.</p>
-        <p>Start your journey today with India’s best online tutoring platform!</p>
-        <button onclick="window.location.href='booking.html'">Get Started</button>
-    </div>
-</section>
+    <!-- ===================================================
+         HERO SECTION
+         - id="home" fixes the nav #home anchor (Phase 1)
+         - class="hero" fixes the CSS selector mismatch (Phase 1)
+         - Animated shapes are decorative — aria-hidden
+    ==================================================== -->
+    <section id="home" class="hero">
 
-<!-- Student Contact Form -->
-<section id="student-contact" class="section">
-    <h2>Send Us a Message</h2>
-    <form action="submit_message.php" method="POST">
-        <input type="text" name="student_name" placeholder="Your Name" required>
-        <textarea name="student_message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-    </form>
-</section>
+        <!-- ================================================
+             HERO BACKGROUND LAYER — fully aria-hidden
+             Contains: central glow orb + 4 floating glass cards
+             All cards are pointer-events:none (decorative only)
+        ================================================= -->
+        <div class="hero-bg" aria-hidden="true">
 
-    <!-- Courses Section -->
-    <section id="courses" class="section">
-        <h2>Our Courses</h2>
-        <div class="course-list">
-            <div class="course-card">📘 Math</div>
-            <div class="course-card">🧪 Science</div>
-            <div class="course-card">📝 English</div>
-            <div class="course-card">💻 Programming</div>
+            <!-- Central electric-blue glow behind hero text -->
+            <div class="hero-glow"></div>
+
+            <!-- Card 1: Mathematics — top-left, background depth -->
+            <div class="glass-card card-1">
+                <div class="gc-header">
+                    <span class="gc-icon">📘</span>
+                    <div class="gc-meta">
+                        <span class="gc-name">Mathematics</span>
+                        <span class="gc-level">Intermediate</span>
+                    </div>
+                </div>
+                <div class="gc-progress">
+                    <div class="gc-bar-track">
+                        <div class="gc-bar-fill" style="--pct: 78%"></div>
+                    </div>
+                    <span class="gc-pct">78%</span>
+                </div>
+                <div class="gc-footer">
+                    <span class="gc-rating">★ 4.9</span>
+                    <span class="gc-students">2.4k enrolled</span>
+                </div>
+            </div>
+
+            <!-- Card 2: Python Coding — bottom-left, midground -->
+            <div class="glass-card card-2">
+                <div class="gc-header">
+                    <span class="gc-icon">💻</span>
+                    <div class="gc-meta">
+                        <span class="gc-name">Python Coding</span>
+                        <span class="gc-level">Beginner</span>
+                    </div>
+                </div>
+                <div class="gc-progress">
+                    <div class="gc-bar-track">
+                        <div class="gc-bar-fill" style="--pct: 45%"></div>
+                    </div>
+                    <span class="gc-pct">45%</span>
+                </div>
+                <div class="gc-footer">
+                    <span class="gc-rating">★ 4.8</span>
+                    <span class="gc-students">1.8k enrolled</span>
+                </div>
+            </div>
+
+            <!-- Card 3: Science — top-right, foreground (sharpest/most opaque) -->
+            <div class="glass-card card-3">
+                <div class="gc-header">
+                    <span class="gc-icon">🧪</span>
+                    <div class="gc-meta">
+                        <span class="gc-name">Science</span>
+                        <span class="gc-level">Advanced</span>
+                    </div>
+                </div>
+                <div class="gc-progress">
+                    <div class="gc-bar-track">
+                        <div class="gc-bar-fill" style="--pct: 62%"></div>
+                    </div>
+                    <span class="gc-pct">62%</span>
+                </div>
+                <div class="gc-footer">
+                    <span class="gc-rating">★ 4.7</span>
+                    <span class="gc-students">3.1k enrolled</span>
+                </div>
+            </div>
+
+            <!-- Card 4: Live Session — bottom-right, midground -->
+            <div class="glass-card card-4">
+                <div class="gc-live-row">
+                    <div class="gc-live-badge">
+                        <span class="gc-live-dot"></span>
+                        <span class="gc-live-label">LIVE</span>
+                    </div>
+                    <span class="gc-icon gc-icon-sm">🎥</span>
+                </div>
+                <div class="gc-session">
+                    <span class="gc-name">Calculus Masterclass</span>
+                    <span class="gc-level">4 students joined</span>
+                </div>
+                <div class="gc-footer">
+                    <span class="gc-join">Join Session →</span>
+                </div>
+            </div>
+
+        </div><!-- /.hero-bg -->
+
+        <div class="hero-content">
+            <div class="hero-badge">🎓 India's Premier Online Tutoring Platform</div>
+
+            <h1>Unlock Your Potential<br>with <span class="highlight">Learnify</span></h1>
+
+            <p class="hero-sub">Expert tutors. Flexible learning. Affordable pricing.</p>
+            <p class="hero-desc">Start your journey today and get access to world-class
+                tutors from the comfort of your home.</p>
+
+            <div class="hero-cta">
+                <!-- id="getStartedBtn" wired by getstared.js → scrolls to #pricing -->
+                <button id="getStartedBtn" class="btn-primary">Get Started Free</button>
+                <a href="#courses" class="btn-ghost">Explore Courses</a>
+            </div>
+
+            <div class="hero-stats" aria-label="Platform statistics">
+                <div class="stat">
+                    <strong>500+</strong>
+                    <span>Expert Tutors</span>
+                </div>
+                <div class="stat-divider" aria-hidden="true"></div>
+                <div class="stat">
+                    <strong>10,000+</strong>
+                    <span>Students</span>
+                </div>
+                <div class="stat-divider" aria-hidden="true"></div>
+                <div class="stat">
+                    <strong>4.9 ★</strong>
+                    <span>Average Rating</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <!-- Pricing Section -->
-<section id="pricing" class="section">
-    <h2>Affordable Pricing Plans</h2>
-    <div class="pricing-container">
-        <div class="pricing-card">
-            <h3>Basic Plan</h3>
-            <p>Best for beginners</p>
-            <h2>₹199/month</h2>
-            <ul>
-                <li>Access to recorded lessons</li>
-                <li>Basic study materials</li>
-                <li>Email support</li>
-            </ul>
-            <button>Get Started</button>
+    <!-- ===================================================
+         WHY CHOOSE US — features grid
+         New section added in Phase 2 for value proposition.
+    ==================================================== -->
+    <section id="features" class="section">
+        <div class="section-header">
+            <span class="section-tag">Why Learnify</span>
+            <h2>Everything you need to succeed</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card reveal-item">
+                <div class="feature-icon">🎯</div>
+                <h3>Personalized Learning</h3>
+                <p>Lessons tailored to your pace, style, and academic goals — no one-size-fits-all.</p>
+            </div>
+            <div class="feature-card reveal-item">
+                <div class="feature-icon">⏰</div>
+                <h3>Flexible Schedule</h3>
+                <p>Book sessions anytime — mornings, evenings, or weekends. You set the pace.</p>
+            </div>
+            <div class="feature-card reveal-item">
+                <div class="feature-icon">🏆</div>
+                <h3>Expert Tutors</h3>
+                <p>All tutors are verified, experienced, and rated by thousands of students.</p>
+            </div>
+            <div class="feature-card reveal-item">
+                <div class="feature-icon">💰</div>
+                <h3>Affordable Pricing</h3>
+                <p>World-class education at prices that work for students and families.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         COURSES SECTION
+         Phase 2: cards now include subject descriptions and tags.
+    ==================================================== -->
+    <section id="courses" class="section section-alt">
+        <div class="section-header">
+            <span class="section-tag">What We Teach</span>
+            <h2>Our Courses</h2>
+            <p class="section-desc">Expertly crafted courses designed for all skill levels.</p>
+        </div>
+        <div class="course-list">
+            <div class="course-card reveal-item">
+                <div class="course-icon">📘</div>
+                <h3>Mathematics</h3>
+                <p>Algebra, Calculus, Geometry &amp; Statistics</p>
+                <span class="course-tag">All Levels</span>
+            </div>
+            <div class="course-card reveal-item">
+                <div class="course-icon">🧪</div>
+                <h3>Science</h3>
+                <p>Physics, Chemistry, Biology &amp; Earth Science</p>
+                <span class="course-tag">All Levels</span>
+            </div>
+            <div class="course-card reveal-item">
+                <div class="course-icon">📝</div>
+                <h3>English</h3>
+                <p>Grammar, Writing, Literature &amp; Communication</p>
+                <span class="course-tag">All Levels</span>
+            </div>
+            <div class="course-card reveal-item">
+                <div class="course-icon">💻</div>
+                <h3>Programming</h3>
+                <p>Python, Web Dev, Data Structures &amp; more</p>
+                <span class="course-tag">Beginner – Advanced</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         PRICING SECTION
+         Phase 2: restructured with price-wrap, checkmark lists,
+         separate button classes for popular vs standard plans.
+         Existing .plan-btn behaviour (scroll to #contact) preserved.
+    ==================================================== -->
+    <section id="pricing" class="section">
+        <div class="section-header">
+            <span class="section-tag">Pricing</span>
+            <h2>Affordable Plans for Everyone</h2>
+            <p class="section-desc">No hidden fees. No commitments. Cancel anytime.</p>
+        </div>
+        <div class="pricing-container">
+
+            <div class="pricing-card reveal-item">
+                <h3>Basic</h3>
+                <p class="plan-tagline">Perfect for beginners</p>
+                <div class="price-wrap">
+                    <span class="currency">₹</span>
+                    <span class="price">199</span>
+                    <span class="period">/mo</span>
+                </div>
+                <ul class="plan-features">
+                    <li><span class="check" aria-hidden="true">✓</span> Access to recorded lessons</li>
+                    <li><span class="check" aria-hidden="true">✓</span> Basic study materials</li>
+                    <li><span class="check" aria-hidden="true">✓</span> Email support</li>
+                </ul>
+                <!-- class="plan-btn" wired by getstared.js → scrolls to #contact -->
+                <button class="plan-btn btn-outline">Get Started</button>
+            </div>
+
+            <div class="pricing-card popular reveal-item">
+                <div class="popular-badge">Most Popular</div>
+                <h3>Standard</h3>
+                <p class="plan-tagline">Best for regular students</p>
+                <div class="price-wrap">
+                    <span class="currency">₹</span>
+                    <span class="price">499</span>
+                    <span class="period">/mo</span>
+                </div>
+                <ul class="plan-features">
+                    <li><span class="check" aria-hidden="true">✓</span> Live tutoring sessions</li>
+                    <li><span class="check" aria-hidden="true">✓</span> All Basic Plan features</li>
+                    <li><span class="check" aria-hidden="true">✓</span> Assignment help</li>
+                </ul>
+                <button class="plan-btn btn-popular">Get Started</button>
+            </div>
+
+            <div class="pricing-card reveal-item">
+                <h3>Premium</h3>
+                <p class="plan-tagline">For advanced learners</p>
+                <div class="price-wrap">
+                    <span class="currency">₹</span>
+                    <span class="price">999</span>
+                    <span class="period">/mo</span>
+                </div>
+                <ul class="plan-features">
+                    <li><span class="check" aria-hidden="true">✓</span> 1-on-1 tutoring</li>
+                    <li><span class="check" aria-hidden="true">✓</span> Personalized study plan</li>
+                    <li><span class="check" aria-hidden="true">✓</span> 24/7 chat support</li>
+                </ul>
+                <button class="plan-btn btn-outline">Get Started</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===================================================
+         CONTACT SECTION
+         Phase 2: contact-grid with form panel + social info panel.
+         Form IDs and JS behaviour from Phase 1 fully preserved.
+    ==================================================== -->
+    <section id="contact" class="section section-alt">
+        <div class="section-header">
+            <span class="section-tag">Get in Touch</span>
+            <h2>Contact Us</h2>
+            <p class="section-desc">Have a question? We'd love to hear from you.</p>
         </div>
 
-        <div class="pricing-card popular">
-            <h3>Standard Plan</h3>
-            <p>Best for regular students</p>
-            <h2>₹499/month</h2>
-            <ul>
-                <li>Live tutoring sessions</li>
-                <li>All Basic Plan features</li>
-                <li>Assignment help</li>
-            </ul>
-            <button>Get Started</button>
+        <div class="contact-grid">
+
+            <!-- Message Form — handled by getstared.js -->
+            <div class="contact-form-wrap reveal-item">
+                <form id="messageForm" novalidate>
+                    <div class="form-group">
+                        <label for="studentName">Your Name</label>
+                        <input  type="text"
+                                id="studentName"
+                                name="student_name"
+                                placeholder="e.g. Rahul Chatterjee"
+                                required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentMessage">Your Message</label>
+                        <textarea   id="studentMessage"
+                                    name="student_message"
+                                    placeholder="Tell us how we can help…"
+                                    required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+                <!-- Shown by getstared.js after submit; role="alert" for screen readers -->
+                <div id="confirmationMessage" role="alert"></div>
+            </div>
+
+            <!-- Social / info panel -->
+            <div class="contact-info reveal-item">
+                <h3>Connect With Us</h3>
+                <p>Follow us on social media for study tips, tutor spotlights,
+                    and student success stories.</p>
+                <div class="social-links">
+                    <a  href="https://www.facebook.com/share/1CzUeXBBHb/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-link">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook logo">
+                        <span>Facebook</span>
+                    </a>
+                    <a  href="https://www.linkedin.com/in/rahul-chatterjee-173b43321?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-link">
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn logo">
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+
         </div>
+    </section>
 
-        <div class="pricing-card">
-            <h3>Premium Plan</h3>
-            <p>Best for advanced learners</p>
-            <h2>₹999/month</h2>
-            <ul>
-                <li>1-on-1 tutoring</li>
-                <li>Personalized study plan</li>
-                <li>24/7 chat support</li>
-            </ul>
-            <button>Get Started</button>
-        </div>
-    </div>
-</section>
-
-
-    <section id="contact" class="section">
-    <h2>Contact Us</h2>
-    <p>Connect with us on social media:</p>
-    
-    <div class="social-links">
-        <a href="https://www.facebook.com/share/1CzUeXBBHb/" target="_blank">
-            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="30">
-            Facebook
-        </a>
-        <a href="https://www.linkedin.com/in/rahul-chatterjee-173b43321?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
-            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="30">
-            LinkedIn
-        </a>
-    </div>
-</section>
-
-
+    <!-- ===================================================
+         FOOTER
+         Phase 2: two-part footer — brand+links row, then copyright bar.
+    ==================================================== -->
     <footer>
-        <p>© 2025 TutorPro. All rights reserved.</p>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="footer-logo">📚 Learnify</span>
+                <p>Empowering students across India with expert,
+                    flexible, and affordable online tutoring.</p>
+            </div>
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="#home">Home</a>
+                <a href="#courses">Courses</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Learnify. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script src="getstared.js"></script>
+
 </body>
 </html>
